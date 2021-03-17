@@ -3,8 +3,8 @@ name: "Tests"
 on:
   pull_request:
   push:
-    branches:         # array of glob patterns matching against refs/heads. Optional; defaults to all
-      - main          # triggers on pushes that contain changes in main
+    branches-ignore: ## Do not do this for main, it has its own workflow.
+      - main
 
 jobs:
   test:

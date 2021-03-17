@@ -25,17 +25,26 @@ class NetstorageAsync {
 	async upload(localSource, netstorageDestination, indexZip = false) {
 		return new Promise((resolve, reject) => {
 			// Check that the file does indeed exist cause
-			this.nsClient.upload(localSource, netstorageDestination, indexZip, (error, response, body) => {
-				if (error) {
-					// errors other than http response codes
-					reject(new Error(`Error uploading, "${error.message}".`));
+			this.nsClient.upload(
+				localSource,
+				netstorageDestination,
+				indexZip,
+				(error, response, body) => {
+					if (error) {
+						// errors other than http response codes
+						reject(new Error(`Error uploading, "${error.message}".`));
+					}
+					if (response.statusCode === 200) {
+						resolve(body);
+					} else {
+						reject(
+							new Error(
+								`Connected to Akamai, did not get a valid response, ${response.statusCode}.`
+							)
+						);
+					}
 				}
-				if (response.statusCode === 200) {
-					resolve(body);
-				} else {
-					reject(new Error(`Connected to Akamai, did not get a valid response, ${response.statusCode}.`));
-				}
-			});
+			);
 		});
 	}
 }

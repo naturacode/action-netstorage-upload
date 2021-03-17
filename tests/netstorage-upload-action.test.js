@@ -31,15 +31,22 @@ describe('Upload to Netstorage', () => {
 
 		const spy = jest
 			.spyOn(Netstorage.prototype, 'upload')
-			.mockImplementation((localSource, netstorageDestination, indexZip, callback) => {
-				callback(false, { statusCode: 200 }, {});
-			});
+			.mockImplementation(
+				(localSource, netstorageDestination, indexZip, callback) => {
+					callback(false, { statusCode: 200 }, {});
+				}
+			);
 
 		await run();
 
 		expect(fs.existsSync).toHaveBeenCalledWith('/foo.zip');
 		expect(core.setFailed).not.toHaveBeenCalled();
-		expect(spy).toHaveBeenCalledWith('/foo.zip', '/cp-code/app/foo.zip', true, expect.any(Function));
+		expect(spy).toHaveBeenCalledWith(
+			'/foo.zip',
+			'/cp-code/app/foo.zip',
+			true,
+			expect.any(Function)
+		);
 		spy.mockRestore();
 	});
 
@@ -63,15 +70,22 @@ describe('Upload to Netstorage', () => {
 
 		const spy = jest
 			.spyOn(Netstorage.prototype, 'upload')
-			.mockImplementation((localSource, netstorageDestination, indexZip, callback) => {
-				callback(false, { statusCode: 200 }, {});
-			});
+			.mockImplementation(
+				(localSource, netstorageDestination, indexZip, callback) => {
+					callback(false, { statusCode: 200 }, {});
+				}
+			);
 
 		await run();
 
 		expect(fs.existsSync).toHaveBeenCalledWith('/foo.zip');
 		expect(core.setFailed).not.toHaveBeenCalled();
-		expect(spy).toHaveBeenCalledWith('/foo.zip', '/cp-code/app/foo.zip', true, expect.any(Function));
+		expect(spy).toHaveBeenCalledWith(
+			'/foo.zip',
+			'/cp-code/app/foo.zip',
+			true,
+			expect.any(Function)
+		);
 		spy.mockRestore();
 	});
 
@@ -95,15 +109,22 @@ describe('Upload to Netstorage', () => {
 
 		const spy = jest
 			.spyOn(Netstorage.prototype, 'upload')
-			.mockImplementation((localSource, netstorageDestination, indexZip, callback) => {
-				callback(false, { statusCode: 200 }, {});
-			});
+			.mockImplementation(
+				(localSource, netstorageDestination, indexZip, callback) => {
+					callback(false, { statusCode: 200 }, {});
+				}
+			);
 
 		await run();
 
 		expect(fs.existsSync).toHaveBeenCalledWith('/foo.zip');
 		expect(core.setFailed).not.toHaveBeenCalled();
-		expect(spy).toHaveBeenCalledWith('/foo.zip', '/cp-code/app/foo.zip', false, expect.any(Function));
+		expect(spy).toHaveBeenCalledWith(
+			'/foo.zip',
+			'/cp-code/app/foo.zip',
+			false,
+			expect.any(Function)
+		);
 		spy.mockRestore();
 	});
 
@@ -124,14 +145,18 @@ describe('Upload to Netstorage', () => {
 
 		const spy = jest
 			.spyOn(Netstorage.prototype, 'upload')
-			.mockImplementation((localSource, netstorageDestination, indexZip, callback) => {
-				callback(false, { statusCode: 200 }, {});
-			});
+			.mockImplementation(
+				(localSource, netstorageDestination, indexZip, callback) => {
+					callback(false, { statusCode: 200 }, {});
+				}
+			);
 
 		await run();
 
 		expect(fs.existsSync).toHaveBeenCalledWith('/foo.zip');
-		expect(core.setFailed).toHaveBeenCalledWith("Path, '/foo.zip' does not exist.");
+		expect(core.setFailed).toHaveBeenCalledWith(
+			"Path, '/foo.zip' does not exist."
+		);
 		expect(spy).not.toHaveBeenCalled();
 		spy.mockRestore();
 	});
@@ -153,15 +178,24 @@ describe('Upload to Netstorage', () => {
 
 		const spy = jest
 			.spyOn(Netstorage.prototype, 'upload')
-			.mockImplementation((localSource, netstorageDestination, indexZip, callback) => {
-				callback(false, { statusCode: 403 }, {});
-			});
+			.mockImplementation(
+				(localSource, netstorageDestination, indexZip, callback) => {
+					callback(false, { statusCode: 403 }, {});
+				}
+			);
 
 		await run();
 
 		expect(fs.existsSync).toHaveBeenCalledWith('/foo.zip');
-		expect(spy).toHaveBeenCalledWith('/foo.zip', '/cp-code/app/foo.zip', true, expect.any(Function));
-		expect(core.setFailed).toHaveBeenCalledWith('Connected to Akamai, did not get a valid response, 403.');
+		expect(spy).toHaveBeenCalledWith(
+			'/foo.zip',
+			'/cp-code/app/foo.zip',
+			true,
+			expect.any(Function)
+		);
+		expect(core.setFailed).toHaveBeenCalledWith(
+			'Connected to Akamai, did not get a valid response, 403.'
+		);
 		spy.mockRestore();
 	});
 
@@ -182,15 +216,24 @@ describe('Upload to Netstorage', () => {
 
 		const spy = jest
 			.spyOn(Netstorage.prototype, 'upload')
-			.mockImplementation((localSource, netstorageDestination, indexZip, callback) => {
-				callback(new Error('Who knows what can happen'), null, null);
-			});
+			.mockImplementation(
+				(localSource, netstorageDestination, indexZip, callback) => {
+					callback(new Error('Who knows what can happen'), null, null);
+				}
+			);
 
 		await run();
 
 		expect(fs.existsSync).toHaveBeenCalledWith('/foo.zip');
-		expect(spy).toHaveBeenCalledWith('/foo.zip', '/cp-code/app/foo.zip', true, expect.any(Function));
-		expect(core.setFailed).toHaveBeenCalledWith('Error uploading, "Who knows what can happen".');
+		expect(spy).toHaveBeenCalledWith(
+			'/foo.zip',
+			'/cp-code/app/foo.zip',
+			true,
+			expect.any(Function)
+		);
+		expect(core.setFailed).toHaveBeenCalledWith(
+			'Error uploading, "Who knows what can happen".'
+		);
 		spy.mockRestore();
 	});
 });

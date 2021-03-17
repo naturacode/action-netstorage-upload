@@ -11,9 +11,13 @@ async function run() {
 		const keyName = core.getInput('key-name', { required: true });
 		const key = core.getInput('key', { required: true });
 		// I could error out if you give me BS, but that is sooo much work.
-		const indexZip = core.getInput('index-zip') === true || core.getInput('index-zip').toLowerCase() === 'true';
+		const indexZip =
+			core.getInput('index-zip') === true ||
+			core.getInput('index-zip').toLowerCase() === 'true';
 		const localPath = core.getInput('local-path', { required: true });
-		const destinationPath = core.getInput('destination-path', { required: true });
+		const destinationPath = core.getInput('destination-path', {
+			required: true,
+		});
 
 		if (!existsSync(localPath)) {
 			throw new Error(`Path, '${localPath}' does not exist.`);
@@ -24,7 +28,7 @@ async function run() {
 			keyName,
 			key,
 			cpCode,
-			ssl: true
+			ssl: true,
 		});
 
 		const netstorageDestination = path.join('/', cpCode, destinationPath);
