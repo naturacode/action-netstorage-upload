@@ -1,33 +1,33 @@
 name: 'Upload to Akamai Netstorage'
 description: 'Uploads a file or folder to Akamai Netstorage'
 branding:
-	icon: 'upload'
-	color: 'gray-dark'
+  icon: 'upload'
+  color: 'gray-dark'
 inputs:
-	hostname:
-		description: 'Netstorage HTTP API'
-		required: true
-	cp-code:
-		description: 'The Netstorage Upload Directory CP Code'
-		required: true
-	key-name:
-		description: 'Upload account Id'
-		required: true
-	key:
-		description: 'Upload account HTTP API Key'
-		required: true
-	index-zip:
-		description: |
-			If this is a zip file upload it to the netstorage direct with the index zip flag.
-			The Upload Directory for the storage group must have Serve From Zip setting enabled.
-		required: true
-		default: false
-	local-path:
-		description: 'The local path to the file to upload'
-		required: true
-	destination-path:
-		description: 'The path to upload to WITHOUT the cp-code, include filename.'
-		required: true
+  hostname:
+    description: 'Netstorage HTTP API'
+    required: true
+  cp-code:
+    description: 'The Netstorage Upload Directory CP Code'
+    required: true
+  key-name:
+    description: 'Upload account Id'
+    required: true
+  key:
+    description: 'Upload account HTTP API Key'
+    required: true
+  index-zip:
+    description: |
+      If this is a zip file upload it to the netstorage direct with the index zip flag.
+      The Upload Directory for the storage group must have Serve From Zip setting enabled.
+    required: true
+    default: false
+  local-path:
+    description: 'The local path to the file to upload'
+    required: true
+  destination-path:
+    description: 'The path to upload to WITHOUT the cp-code, include filename.'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
