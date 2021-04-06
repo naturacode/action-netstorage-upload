@@ -1,5 +1,5 @@
 # Netstorage Upload Action
-This is a GitHub Action for uploading a single file to Akamai Netstorage. Other than some unit tests, there has not been much testing of this action.
+This is a GitHub Action for uploading a single file to Akamai Netstorage.
 
 ## Input Params
 **Unless marked otherwise you will want to use GitHub Repo secrets to secure the input parameters!**
