@@ -10,7 +10,6 @@ This is a GitHub Action for uploading a single file to Akamai Netstorage.
 * `key-name` - This is the id of the Netstorage upload account associated with the storage group.
 * `key` - The API Key for the upload account.
 * `index-zip` - This indexes a zip for use when the Upload Directory for the storage group has the Serve From Zip setting enabled. (Does not require secrets)
-  * NOTE: If you have configured the directory and user to automatically index zips, then this should be set to `false`.
 * `local-path` - This is the local path to the file to upload. This is going to be relative to the current working folder. (Does not require secrets)
 * `destination-path` - The full upload path **WITHOUT the cp-code**, include filename.' The cp-code directory will prepended to the destination path. (Does not require secrets)
 
