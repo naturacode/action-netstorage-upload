@@ -1,11 +1,11 @@
 {
   "name": "netstorage-upload-action",
-  "version": "0.9.1",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint 'src/**.js' 'tests/**.js'",
-		"lint:fix": "eslint 'src/**.js' 'tests/**.js' --fix",
+    "lint:fix": "eslint 'src/**.js' 'tests/**.js' --fix",
     "test": "npm run lint && jest --coverage",
     "build": "npm test && ncc build src/main.js"
   },
